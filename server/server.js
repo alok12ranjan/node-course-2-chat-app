@@ -18,11 +18,12 @@ app.use(express.static(publicPath));
 io.on('connection', (socket) => {
     console.log('New User Connected');
 
-    socket.emit('newMessage', {
-        from: 'Rohan',
-        text: 'see you then',
-        createdAt: 1231234
-    });
+    //Single connection
+    // socket.emit('newMessage', {
+    //     from: 'Rohan',
+    //     text: 'see you then',
+    //     createdAt: 1231234
+    // });
 
     // socket.emit('newEmail', {
     //      from: 'alok12.ranjan@gmail.com',
@@ -36,6 +37,11 @@ io.on('connection', (socket) => {
 
     socket.on('createMessage', (message) => {
         console.log('createMessage', message);
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
     });
 
     socket.on('disconnect', () => {

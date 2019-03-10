@@ -7,10 +7,11 @@ socket.on('connect', () => {
     //     text: 'Hey, This is Alok'
     // });
 
-    socket.emit('createMessage', {
-        from: 'Alok',
-        text: 'Yup, thats work for me'
-    });
+    //Single Connection
+    // socket.emit('createMessage', {
+    //     from: 'Alok',
+    //     text: 'Yup, thats work for me'
+    // });
 });
 
 socket.on('disconnect', () => {
